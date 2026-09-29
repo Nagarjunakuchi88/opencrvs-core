@@ -23,6 +23,7 @@ import sendVerifyCodeHandler, {
 } from '@gateway/routes/verifyCode/handler'
 import { trpcProxy } from '@gateway/v2-events/event-config/routes'
 import { DOCUMENTS_URL } from '@gateway/constants'
+import { locationSnapshotRoute } from '@gateway/features/locations/snapshotRoute'
 
 export const getRoutes = () => {
   const routes: ServerRoute[] = [
@@ -126,6 +127,9 @@ export const getRoutes = () => {
         }
       }
     },
+    // Must be registered with the other /locations routes; hapi prefers
+    // the literal '/locations/snapshot' over '/locations/{suffix}'.
+    locationSnapshotRoute,
     catchAllProxy.getLocations,
     catchAllProxy.updateLocations,
     catchAllProxy.createLocations,

@@ -13,6 +13,7 @@ import { APPLICATION_CONFIG_URL, AUTH_URL } from '@gateway/constants'
 import fetch from '@gateway/fetch'
 import { rateLimitedRoute } from '@gateway/rate-limit'
 import { api } from '@gateway/v2-events/events/service'
+import { rebuildLocationSnapshot } from '@gateway/features/locations/snapshotRoute'
 import {
   bustLocationsCache,
   fetchAndCache,
@@ -197,6 +198,7 @@ export const catchAllProxy = {
       })
 
       await bustLocationsCache()
+      rebuildLocationSnapshot(req.headers.authorization)
 
       return h.response(response.body).code(response.status)
     },
@@ -232,6 +234,7 @@ export const catchAllProxy = {
       })
 
       await bustLocationsCache()
+      rebuildLocationSnapshot(req.headers.authorization)
 
       return h.response({}).code(response.status)
     },
