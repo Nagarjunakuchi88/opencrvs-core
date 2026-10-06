@@ -10,7 +10,7 @@
     "revert": "./revert-migrations.sh",
     "start:prod": "NODE_ENV=production ./run-migrations.sh",
     "create:hearth": "./create-mongo-migrations.sh hearth",
-    "create:events": "DATABASE_URL=postgres://events_migrator:migrator_password@localhost:5432/events yarn node-pg-migrate create --migrations-dir=./src/migrations/events --migration-file-language=ts",
+    "create:events": "DATABASE_URL=postgres://events_migrator:migrator_password@localhost:5432/events yarn node-pg-migrate create --migrations-dir=./src/migrations/events --migration-file-language[...]",
     "create:openhim": "./create-mongo-migrations.sh openhim",
     "create:performance": "./create-mongo-migrations.sh performance",
     "create:user-mgnt": "./create-mongo-migrations.sh user-mgnt",
@@ -39,7 +39,7 @@
     "minio": "^7.0.33",
     "mongoose": "^6.11.3",
     "node-pg-migrate": "^8.0.3",
-    "pg": "^8.22.0",
+    "pg": "^8.16.0",
     "tsx": "^4.15.7",
     "uuid": "^3.2.1"
   },
